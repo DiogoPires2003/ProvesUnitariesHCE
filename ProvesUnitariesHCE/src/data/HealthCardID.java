@@ -1,9 +1,21 @@
 package data;
 
-public class HealthCardID {
+final public class HealthCardID {
     private final String personalID;
 
-    public HealthCardID(String code) { this.personalID = code; }
+    public HealthCardID(String code) {
+        if (code == null) {
+            throw new IllegalArgumentException("HealthCardID no puede ser nulo.");
+        }
+        if (code.trim().isEmpty()) {
+            throw new IllegalArgumentException("HealthCardID no puede estar vacio.");
+        }
+        if (code.length() != 16) {
+            throw new IllegalArgumentException("HealthCardID debe tener 16 caracteres.");
+        }
+
+        this.personalID = code;
+    }
 
     public String getPersonalID() { return personalID; }
 
