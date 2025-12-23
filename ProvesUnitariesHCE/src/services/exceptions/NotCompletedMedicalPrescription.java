@@ -1,4 +1,4 @@
-package services.execeptions;
+package services.exceptions;
 
 public class NotCompletedMedicalPrescription extends RuntimeException {
     public NotCompletedMedicalPrescription(String message) {

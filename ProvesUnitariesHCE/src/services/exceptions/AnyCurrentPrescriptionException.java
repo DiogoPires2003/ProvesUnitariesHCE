@@ -1,4 +1,4 @@
-package services.execeptions;
+package services.exceptions;
 
 public class AnyCurrentPrescriptionException extends RuntimeException {
     public AnyCurrentPrescriptionException(String message) {

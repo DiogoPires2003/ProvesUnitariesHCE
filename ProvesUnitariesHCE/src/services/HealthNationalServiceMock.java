@@ -1,7 +1,10 @@
 package services;
 
 import medicalConsultation.*;
-import services.execeptions.*;
+import services.exceptions.AnyCurrentPrescriptionException;
+import services.exceptions.ConnectException;
+import services.exceptions.HealthCardIDException;
+import services.exceptions.NotCompletedMedicalPrescription;
 
 public class HealthNationalServiceMock implements HealthNationalService {
 

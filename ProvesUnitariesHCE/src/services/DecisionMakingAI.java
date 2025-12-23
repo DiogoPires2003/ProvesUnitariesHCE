@@ -1,3 +1,5 @@
+package services;
+
 import services.exceptions.AIException;
 import services.exceptions.BadPromptException;
 

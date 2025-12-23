@@ -1,3 +1,5 @@
+package services;
+
 public class Suggestion {
     private char action; // 'I' for Insertion, 'E' for Elimination, 'M' for Modification
     private String productID;
@@ -53,7 +55,7 @@ public class Suggestion {
 
     @Override
     public String toString() {
-        return "Suggestion{" +
+        return "services.Suggestion{" +
                 "action=" + action +
                 ", productID='" + productID + '\'' +
                 ", moment='" + moment + '\'' +

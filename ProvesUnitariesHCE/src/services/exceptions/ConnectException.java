@@ -1,4 +1,4 @@
-package services.execeptions;
+package services.exceptions;
 
 public class ConnectException extends RuntimeException {
     public ConnectException(String message) {

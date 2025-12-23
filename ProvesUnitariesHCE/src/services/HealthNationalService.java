@@ -1,5 +1,8 @@
 package services;
-import services.execeptions.*;
+import services.exceptions.AnyCurrentPrescriptionException;
+import services.exceptions.ConnectException;
+import services.exceptions.HealthCardIDException;
+import services.exceptions.NotCompletedMedicalPrescription;
 import medicalConsultation.*;
 
 public interface HealthNationalService {
