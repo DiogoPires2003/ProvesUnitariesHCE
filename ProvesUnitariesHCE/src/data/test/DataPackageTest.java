@@ -1,5 +1,9 @@
-package data;
+package data.test;
 
+import data.DigitalSignature;
+import data.HealthCardID;
+import data.ProductID;
+import data.ePrescripCode;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
