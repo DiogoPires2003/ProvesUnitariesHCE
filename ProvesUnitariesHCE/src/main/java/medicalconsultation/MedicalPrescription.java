@@ -58,6 +58,19 @@ public class MedicalPrescription {
         lines.remove(prodID);
     }
 
+    public Map<ProductID, TakingGuideline> getLines() {
+        return lines;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+
     private TakingGuideline createTakingGuideline(String[] instruc) {
 
         dayMoment dm = dayMoment.valueOf(instruc[0]);
