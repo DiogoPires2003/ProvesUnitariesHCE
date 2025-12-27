@@ -1,26 +1,21 @@
 package main.java.medicalconsultation;
 
-import data.*;
+import data.HealthCardID;
+import data.ProductID;
+import main.java.medicalconsultation.exceptions.*;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class MedicalPrescription {
 
     private HealthCardID cip;
-    private int memberShipNumb;
     private String illness;
-    private ePrescripCode prescCode;
-    private Date prescDate;
-    private Date endDate;
-    private DigitalSignature eSign;
 
     private Map<ProductID, TakingGuideline> lines = new HashMap<>();
 
-    public MedicalPrescription(HealthCardID cip, int memberShipNumb, String illness) {
+    public MedicalPrescription(HealthCardID cip, String illness) {
         this.cip = cip;
-        this.memberShipNumb = memberShipNumb;
         this.illness = illness;
     }
 
@@ -31,9 +26,25 @@ public class MedicalPrescription {
         if (lines.containsKey(prodID))
             throw new ProductAlreadyInPrescriptionException();
 
+        if (instruc == null || instruc.length < 6)
+            throw new IncorrectTakingGuidelinesException();
+
         try {
-            TakingGuideline tg = createTakingGuideline(instruc);
+            dayMoment dm = dayMoment.valueOf(instruc[0]);
+            float duration = Float.parseFloat(instruc[1]);
+            float dose = Float.parseFloat(instruc[2]);
+            float freq = Float.parseFloat(instruc[3]);
+            FqUnit fu = FqUnit.valueOf(instruc[4]);
+            String instr = instruc[5];
+
+            if (duration <= 0 || dose <= 0 || freq <= 0)
+                throw new IncorrectTakingGuidelinesException();
+
+            TakingGuideline tg =
+                    new TakingGuideline(dm, duration, dose, freq, fu, instr);
+
             lines.put(prodID, tg);
+
         } catch (Exception e) {
             throw new IncorrectTakingGuidelinesException();
         }
@@ -41,6 +52,9 @@ public class MedicalPrescription {
 
     public void modifyDoseInLine(ProductID prodID, float newDose)
             throws ProductNotInPrescriptionException {
+
+        if (newDose <= 0)
+            throw new IllegalArgumentException("Dose must be positive");
 
         TakingGuideline tg = lines.get(prodID);
         if (tg == null)
@@ -58,28 +72,7 @@ public class MedicalPrescription {
         lines.remove(prodID);
     }
 
-    public Map<ProductID, TakingGuideline> getLines() {
-        return lines;
-    }
-
-    public void setEndDate(Date endDate) {
-        this.endDate = endDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-
-    private TakingGuideline createTakingGuideline(String[] instruc) {
-
-        dayMoment dm = dayMoment.valueOf(instruc[0]);
-        float duration = Float.parseFloat(instruc[1]);
-        float dose = Float.parseFloat(instruc[2]);
-        float freq = Float.parseFloat(instruc[3]);
-        FqUnit fu = FqUnit.valueOf(instruc[4]);
-        String instructions = instruc.length > 5 ? instruc[5] : null;
-
-        return new TakingGuideline(dm, duration, dose, freq, fu, instructions);
+    public int getNumberOfLines() {
+        return lines.size();
     }
 }

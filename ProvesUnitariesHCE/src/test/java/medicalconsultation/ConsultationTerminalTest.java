@@ -1,6 +1,8 @@
 package test.java.medicalconsultation;
 
-import data.*;
+import main.java.data.*;
+import main.java.medicalconsultation.ConsultationTerminal;
+import main.java.medicalconsultation.exceptions.ProceduralException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

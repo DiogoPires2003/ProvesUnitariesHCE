@@ -2,41 +2,30 @@ package main.java.medicalconsultation;
 
 public class TakingGuideline {
 
-    private dayMoment dMoment;
+    private dayMoment dayMoment;
     private float duration;
     private Posology posology;
     private String instructions;
 
-    public TakingGuideline(dayMoment dMoment,
+    public TakingGuideline(dayMoment dm,
                            float duration,
                            float dose,
                            float freq,
-                           FqUnit freqUnit,
-                           String instructions) {
+                           FqUnit fu,
+                           String instr) {
 
-        if (dMoment == null || duration <= 0 || freqUnit == null)
-            throw new IllegalArgumentException("Invalid taking guideline");
-
-        this.dMoment = dMoment;
+        this.dayMoment = dm;
         this.duration = duration;
-        this.posology = new Posology(dose, freq, freqUnit);
-        this.instructions = instructions;
+        this.posology = new Posology(dose, freq, fu);
+        this.instructions = instr;
     }
 
     public dayMoment getDayMoment() {
-        return dMoment;
-    }
-
-    public void setDayMoment(dayMoment dMoment) {
-        this.dMoment = dMoment;
+        return dayMoment;
     }
 
     public float getDuration() {
         return duration;
-    }
-
-    public void setDuration(float duration) {
-        this.duration = duration;
     }
 
     public Posology getPosology() {
@@ -45,9 +34,5 @@ public class TakingGuideline {
 
     public String getInstructions() {
         return instructions;
-    }
-
-    public void setInstructions(String instructions) {
-        this.instructions = instructions;
     }
 }

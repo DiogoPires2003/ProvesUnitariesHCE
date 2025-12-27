@@ -1,28 +1,26 @@
 package main.java.medicalconsultation;
 
 import data.HealthCardID;
+import main.java.medicalconsultation.exceptions.IncorrectParametersException;
 
 public class MedicalHistory {
 
     private HealthCardID cip;
     private int memberShipNumb;
-    private String history;
+    private String history = "";
 
     public MedicalHistory(HealthCardID cip, int memberShipNumb)
             throws IncorrectParametersException {
 
         if (cip == null || memberShipNumb <= 0)
-            throw new IncorrectParametersException();
+            throw new IncorrectParametersException("Invalid parameters");
 
         this.cip = cip;
         this.memberShipNumb = memberShipNumb;
-        this.history = "";
     }
 
     public void addMedicalHistoryAnnotations(String annot) {
-        if (annot != null && !annot.isBlank()) {
-            history += annot + "\n";
-        }
+        history += annot + "\n";
     }
 
     public void setNewDoctor(int mshN) {
