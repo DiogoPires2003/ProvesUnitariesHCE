@@ -1,4 +1,4 @@
-package exceptions;
+package main.java.medicalconsultation.exceptions;
 
 public class ProductAlreadyInPrescriptionException extends Exception {
     public ProductAlreadyInPrescriptionException() {

@@ -1,4 +1,4 @@
-package medicalconsultation;
+package main.java.medicalconsultation;
 
 import data.*;
 

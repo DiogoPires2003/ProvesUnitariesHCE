@@ -1,4 +1,4 @@
-package exceptions;
+package main.java.medicalconsultation.exceptions;
 
 public class eSignatureException extends Exception {
     public eSignatureException() {

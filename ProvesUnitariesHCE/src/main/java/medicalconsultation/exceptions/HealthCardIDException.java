@@ -1,4 +1,4 @@
-package exceptions;
+package main.java.medicalconsultation.exceptions;
 
 public class HealthCardIDException extends Exception {
     public HealthCardIDException() {

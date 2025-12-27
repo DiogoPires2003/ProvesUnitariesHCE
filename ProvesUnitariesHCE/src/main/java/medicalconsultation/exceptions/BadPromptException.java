@@ -1,4 +1,4 @@
-package exceptions;
+package main.java.medicalconsultation.exceptions;
 
 public class BadPromptException extends Exception {
     public BadPromptException() {
